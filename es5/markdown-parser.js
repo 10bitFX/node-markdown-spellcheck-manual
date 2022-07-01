@@ -28,6 +28,14 @@ exports.default = function (src) {
   tracker.replaceAll(/\{%.*%\}/, " ");
   tracker.replaceAll(/\{\{.*\}\}/, " ");
   tracker.replaceAll(/&[#a-z0-9]{1,5};/, " ");
+
+  // CUSTOM RegEx for Notch Manuals
+  tracker.replaceAll(/\{.*?\}/i, " "); // remove contents of variables
+  tracker.replaceAll(/[a-zA-Z0-9]*\(\)/i, " "); // remove Javascript function names
+  tracker.replaceAll(/\s(v[0-9.]+)/i, " "); // remove version numbers v1.2.3
+  tracker.replaceAll(/[a-zA-Z0-9_-]+\.((dfx)|(exe)|(jpg)|(jpeg)|(dll)|(nvf)|(obj)|(fbx)|(WibuCmRaU)|(WibuCmRaC))/i, " "); // remove file extensions
+  // END CUSTOM
+
   src = tracker.replaceAll(/<\/?[a-z0-9]+ ?([a-z]+="[^"]*" ?)*\/?>/i, " ");
 
   var options = {
