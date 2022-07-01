@@ -33,7 +33,8 @@ exports.default = function (src) {
   tracker.replaceAll(/\{.*?\}/i, " "); // remove contents of variables
   tracker.replaceAll(/[a-zA-Z0-9]*\(\)/i, " "); // remove Javascript function names
   tracker.replaceAll(/\s(v[0-9.]+)/i, " "); // remove version numbers v1.2.3
-  tracker.replaceAll(/[a-zA-Z0-9_-]+\.((dfx)|(exe)|(jpg)|(jpeg)|(dll)|(nvf)|(obj)|(fbx)|(WibuCmRaU)|(WibuCmRaC))/i, " "); // remove file extensions
+  tracker.replaceAll(/[0-9]+x[0-9]+/i, " "); // remove resolutions 1024x768
+  tracker.replaceAll(/[a-zA-Z0-9_-]+\.((dfx)|(exe)|(jpg)|(jpeg)|(dll)|(nvf)|(obj)|(fbx)|(WibuCmRaU)|(WibuCmRaC)|(sbasar))/i, " "); // remove file extensions
   // END CUSTOM
 
   src = tracker.replaceAll(/<\/?[a-z0-9]+ ?([a-z]+="[^"]*" ?)*\/?>/i, " ");
